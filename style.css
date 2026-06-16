@@ -1,0 +1,662 @@
+/* ==========================================================================
+   إعدادات الألوان والهوية البصرية للجوال أولاً
+   ========================================================================== */
+:root {
+    --main-color: #0f172a;       /* كحلي ملكي داكن */
+    --gold-color: #c5a028;       /* ذهبي فخم دافئ */
+    --gold-hover: #b59020;
+    --bg-light: #f8fafc;         /* خلفية ناصعة ومريحة للقراءة */
+    --white: #ffffff;
+    --whatsapp-green: #075e54;   /* أخضر واتساب الداكن الرسمي */
+    --call-red: #dc2626;         /* أحمر الاتصال لجذب الانتباه */
+    --text-dark: #1e293b;
+    --text-muted: #475569;       /* تعديل تباين لضمان وضوح القراءة للعين واجتياز فحص المنظمات العالمية */
+    --border-color: #cbd5e1;
+    --transition-speed: 0.25s;
+    --font-main: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   تصفير الإعدادات الافتراضية للجوال وحظر الانزياح الأفقي تماماً
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent; /* إزالة الوميض الرمادي عند النقر في الآيفون */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.7;
+    width: 100%;
+    overflow-x: hidden; /* حظر أي اهتزاز أو تمدد أفقي في الجوال */
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-speed) ease;
+}
+
+/* حاوية الجوال المرنة */
+.container {
+    width: 100%;
+    padding: 0 16px; /* مسافة أمان ممتازة على أطراف الجوال */
+    margin: 0 auto;
+}
+
+/* مسافات الأقسام للجوال */
+.section-padding {
+    padding: 40px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* تنظيم الأوصاف والفقرات لتكون مرتبة للزائر ومريحة للعين */
+.desc-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: justify;
+    text-align-last: center;
+    margin-bottom: 15px;
+}
+
+/* نظام الشبكة الافتراضي للجوال (عمود واحد دائماً لسهولة التصفح) */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 16px;
+}
+
+/* التجاوب التلقائي للشاشات الأكبر قليلاً (التابلت والكمبيوتر) */
+@media (min-width: 769px) {
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .section-padding { padding: 70px 0; }
+}
+
+/* ==========================================================================
+   تصميم الهيدر وقائمة الجوال (سهل الاستخدام وسريع الاستجابة)
+   ========================================================================== */
+.promo-strip {
+    background-color: var(--gold-color);
+    color: var(--main-color);
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.main-navigation {
+    background-color: var(--main-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--gold-color);
+    padding: 10px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--white);
+    border-right: 4px solid var(--gold-color);
+    padding-right: 10px;
+}
+
+.logo-gold {
+    color: var(--gold-color);
+}
+
+/* قائمة الجوال (تفتح كدرج جانبي مرن) */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%); /* البداية خارج الشاشة تماماً لليمين */
+    width: 280px;
+    height: 100vh;
+    background-color: var(--main-color);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 40px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.nav-menu.open {
+    transform: translateX(0); /* الدخول السلس لداخل الشاشة */
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    list-style: none;
+}
+
+.nav-links li {
+    width: 100%;
+}
+
+.nav-links a, .dropbtn {
+    font-size: 1rem;
+    color: #cbd5e1;
+    font-weight: 700;
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: block;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+    font-family: var(--font-main);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: var(--gold-color);
+    color: var(--main-color);
+}
+
+/* القائمة المنسدلة للخدمات بالجوال */
+.dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.dropdown-content a {
+    background: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.mobile-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* دعم الشاشات الكبيرة تلقائياً */
+@media (min-width: 993px) {
+    .nav-menu {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transform: translateX(0);
+    }
+    .nav-links {
+        flex-direction: row;
+        gap: 8px;
+    }
+    .nav-links a, .dropbtn {
+        font-size: 0.9rem;
+        background: transparent;
+        color: #e2e8f0;
+        padding: 6px 14px;
+        border-radius: 20px;
+    }
+    .nav-links a:hover, .nav-links a.active {
+        background-color: var(--gold-color);
+        color: var(--main-color);
+    }
+    .dropdown-content {
+        position: absolute;
+        right: 0;
+        background: var(--white);
+        min-width: 160px;
+        box-shadow: var(--shadow);
+        border-top: 3px solid var(--gold-color);
+        border-radius: 4px;
+        z-index: 1001;
+    }
+    .dropdown-content a {
+        color: var(--text-dark);
+        border-radius: 0;
+        padding: 8px 12px;
+    }
+    .mobile-toggle {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   تنسيق البانر الرئيسي لمنع انزياح العناصر (Hero Section Styles)
+   ========================================================================== */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0 60px;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 10, 19, 0.7);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* تصميم ثابت متباين ومميز للوسم الملون ليناسب جميع خلفيات الموقع الفاتحة والداكنة */
+.badge {
+    display: inline-block;
+    background-color: var(--main-color) !important;
+    border: 1px solid var(--gold-color) !important;
+    color: var(--gold-color) !important;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   تنسيق العروض والخصائص والشبكات (why-us-box & features-list)
+   ========================================================================== */
+.why-us-box {
+    background: var(--white);
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid #f1f5f9;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.features-list li {
+    position: relative;
+    padding: 12px 15px;
+    background-color: var(--bg-light);
+    border-right: 4px solid var(--gold-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   تنسيق الأزرار العامة بالموقع وتثبيت التباين البرمجي
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-family: var(--font-main);
+    transition: var(--transition-speed) ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.btn-gold {
+    background-color: var(--gold-color) !important;
+    color: var(--main-color) !important; /* كحلي داكن على ذهبي دافئ يحقق أعلى درجات تباين للعين والزاحف البرمجي */
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-hover) !important;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp-green) !important;
+    color: var(--white) !important;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e !important;
+    transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 16px 36px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   تنسيق كروت الخدمات وعناصر الصفحة لتكون منظمة للزائر
+   ========================================================================== */
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-subtitle {
+    color: #856404; 
+    font-weight: 800;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.section-title h2 {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: var(--main-color);
+}
+
+.section-title .line {
+    width: 50px;
+    height: 3px;
+    background-color: var(--gold-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.ser-card {
+    background: var(--white);
+    padding: 24px 16px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.ser-card i {
+    font-size: 2rem;
+    color: var(--gold-color);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.ser-card h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--main-color);
+    margin-bottom: 8px;
+}
+
+/* تعديل لون الروابط داخل الكروت إلى درجة ذهبية داكنة ملكية (#8c6b00) لتحقيق تباين تصفح مثالي يتجاوز 4.5:1 */
+.card-link {
+    font-weight: 800;
+    color: #8c6b00; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+/* ==========================================================================
+   الفوتر الفخم والموحد (متوافق تماماً مع تصفح الجوال السريع)
+   ========================================================================== */
+.footer-main {
+    background-color: #0b0f19;
+    color: #cbd5e1;
+    padding: 40px 0 0;
+    border-top: 4px solid var(--gold-color);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 769px) {
+    .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+}
+
+.footer-col h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 8px;
+    font-weight: 800;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--gold-color);
+}
+
+.footer-desc {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    padding: 4px 0; 
+}
+
+.footer-links a i {
+    font-size: 0.65rem;
+    color: var(--gold-color);
+}
+
+.footer-links a:hover {
+    color: var(--gold-color);
+}
+
+/* شريط الحقوق السفلي والتطوير المربوط بالواتساب */
+.footer-bottom {
+    margin-top: 35px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: #cbd5e1; 
+}
+
+@media (min-width: 769px) {
+    .footer-bottom {
+        flex-direction: row;
+    }
+}
+
+.dev-link {
+    color: var(--gold-color) !important;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(197, 160, 40, 0.08);
+    transition: var(--transition-speed) ease;
+}
+
+.dev-link:hover {
+    background: var(--gold-color);
+    color: var(--main-color) !important;
+}
+
+/* ==========================================================================
+   أزرار التحويل والاتصال الثابتة بالجوال لزيادة الاتصالات (CTA)
+   ========================================================================== */
+.fixed-widgets {
+    position: fixed;
+    right: 12px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999 !important;
+}
+
+.widget-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white) !important;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    position: relative;
+}
+
+.widget-wa {
+    background-color: var(--whatsapp-green);
+}
+
+.widget-phone {
+    background-color: var(--call-red);
+}
+
+/* تأثير النبض الإعلاني الجاذب لانتباه العميل في إعلانات جوجل */
+.pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: pulse-anim 2s infinite;
+    background: inherit;
+    z-index: -1;
+}
+
+@keyframes pulse-anim {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* ==========================================================================
+   زر الصعود للأعلى (Back To Top) المحسن لسهولة تصفح الجوال
+   ========================================================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 12px;
+    width: 46px;
+    height: 46px;
+    background-color: var(--main-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999 !important;
+    cursor: pointer;
+    border: 2px solid var(--gold-color);
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    
+    /* مخفي بشكل سلس حتى يتم النزول بالصفحة */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: var(--gold-color);
+    color: var(--main-color);
+}
