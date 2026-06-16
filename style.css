@@ -1,16 +1,17 @@
 /* ==========================================================================
-   إعدادات الألوان والهوية البصرية للجوال أولاً
+   إعدادات الألوان والهوية البصرية للجوال أولاً (برتقالي إنشائي مع الأردوازي الداكن)
    ========================================================================== */
 :root {
-    --main-color: #0f172a;       /* كحلي ملكي داكن */
-    --gold-color: #c5a028;       /* ذهبي فخم دافئ */
-    --gold-hover: #b59020;
+    --main-color: #0f172a;       /* كحلي أردوازي داكن */
+    --accent-color: #f97316;     /* برتقالي إنشائي فاقع */
+    --accent-hover: #ea580c;
+    --accent-text: #c2410c;      /* برتقالي داكن مخصص للقراءة الفائقة التباين على الخلفيات البيضاء */
     --bg-light: #f8fafc;         /* خلفية ناصعة ومريحة للقراءة */
     --white: #ffffff;
     --whatsapp-green: #075e54;   /* أخضر واتساب الداكن الرسمي */
     --call-red: #dc2626;         /* أحمر الاتصال لجذب الانتباه */
     --text-dark: #1e293b;
-    --text-muted: #475569;       /* تعديل تباين لضمان وضوح القراءة للعين واجتياز فحص المنظمات العالمية */
+    --text-muted: #475569;       /* رمادي معتدل يضمن تحقيق تباين تصفح سليم */
     --border-color: #cbd5e1;
     --transition-speed: 0.25s;
     --font-main: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
@@ -96,7 +97,7 @@ a {
    تصميم الهيدر وقائمة الجوال (سهل الاستخدام وسريع الاستجابة)
    ========================================================================== */
 .promo-strip {
-    background-color: var(--gold-color);
+    background-color: var(--accent-color);
     color: var(--main-color);
     text-align: center;
     padding: 8px 12px;
@@ -110,7 +111,7 @@ a {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 2px solid var(--gold-color);
+    border-bottom: 2px solid var(--accent-color);
     padding: 10px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -125,12 +126,12 @@ a {
     font-size: 1.4rem;
     font-weight: 900;
     color: var(--white);
-    border-right: 4px solid var(--gold-color);
+    border-right: 4px solid var(--accent-color);
     padding-right: 10px;
 }
 
 .logo-gold {
-    color: var(--gold-color);
+    color: var(--accent-color);
 }
 
 /* قائمة الجوال (تفتح كدرج جانبي مرن) */
@@ -183,7 +184,7 @@ a {
 }
 
 .nav-links a:hover, .nav-links a.active {
-    background-color: var(--gold-color);
+    background-color: var(--accent-color);
     color: var(--main-color);
 }
 
@@ -246,7 +247,7 @@ a {
         border-radius: 20px;
     }
     .nav-links a:hover, .nav-links a.active {
-        background-color: var(--gold-color);
+        background-color: var(--accent-color);
         color: var(--main-color);
     }
     .dropdown-content {
@@ -255,7 +256,7 @@ a {
         background: var(--white);
         min-width: 160px;
         box-shadow: var(--shadow);
-        border-top: 3px solid var(--gold-color);
+        border-top: 3px solid var(--accent-color);
         border-radius: 4px;
         z-index: 1001;
     }
@@ -307,8 +308,8 @@ a {
 .badge {
     display: inline-block;
     background-color: var(--main-color) !important;
-    border: 1px solid var(--gold-color) !important;
-    color: var(--gold-color) !important;
+    border: 1px solid var(--accent-color) !important;
+    color: var(--accent-color) !important;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -340,7 +341,7 @@ a {
     position: relative;
     padding: 12px 15px;
     background-color: var(--bg-light);
-    border-right: 4px solid var(--gold-color);
+    border-right: 4px solid var(--accent-color);
     border-radius: 4px;
     font-size: 0.9rem;
     font-weight: 700;
@@ -366,12 +367,12 @@ a {
 }
 
 .btn-gold {
-    background-color: var(--gold-color) !important;
-    color: var(--main-color) !important; /* كحلي داكن على ذهبي دافئ يحقق أعلى درجات تباين للعين والزاحف البرمجي */
+    background-color: var(--accent-color) !important;
+    color: var(--main-color) !important; /* كحلي أردوازي داكن على برتقالي إنشائي يحقق أعلى درجات تباين للعين والزاحف البرمجي */
 }
 
 .btn-gold:hover {
-    background-color: var(--gold-hover) !important;
+    background-color: var(--accent-hover) !important;
     transform: translateY(-2px);
 }
 
@@ -398,7 +399,7 @@ a {
 }
 
 .section-subtitle {
-    color: #856404; 
+    color: var(--accent-text); 
     font-weight: 800;
     font-size: 0.8rem;
     display: block;
@@ -414,7 +415,7 @@ a {
 .section-title .line {
     width: 50px;
     height: 3px;
-    background-color: var(--gold-color);
+    background-color: var(--accent-color);
     margin: 10px auto 0;
     border-radius: 2px;
 }
@@ -434,7 +435,7 @@ a {
 
 .ser-card i {
     font-size: 2rem;
-    color: var(--gold-color);
+    color: var(--accent-color);
     margin-bottom: 12px;
     display: block;
 }
@@ -446,10 +447,10 @@ a {
     margin-bottom: 8px;
 }
 
-/* تعديل لون الروابط داخل الكروت إلى درجة ذهبية داكنة ملكية (#8c6b00) لتحقيق تباين تصفح مثالي يتجاوز 4.5:1 */
+/* تعديل لون الروابط داخل الكروت إلى درجة برتقالية داكنة ملكية لتحقيق تباين تصفح مثالي يتجاوز 4.5:1 */
 .card-link {
     font-weight: 800;
-    color: #8c6b00; 
+    color: var(--accent-text); 
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -465,7 +466,7 @@ a {
     background-color: #0b0f19;
     color: #cbd5e1;
     padding: 40px 0 0;
-    border-top: 4px solid var(--gold-color);
+    border-top: 4px solid var(--accent-color);
 }
 
 .footer-grid {
@@ -475,7 +476,7 @@ a {
 }
 
 @media (min-width: 769px) {
-    .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1.2fr 1fr; }
 }
 
 .footer-col h3 {
@@ -494,7 +495,7 @@ a {
     right: 0;
     width: 30px;
     height: 2px;
-    background-color: var(--gold-color);
+    background-color: var(--accent-color);
 }
 
 .footer-desc {
@@ -525,11 +526,11 @@ a {
 
 .footer-links a i {
     font-size: 0.65rem;
-    color: var(--gold-color);
+    color: var(--accent-color);
 }
 
 .footer-links a:hover {
-    color: var(--gold-color);
+    color: var(--accent-color);
 }
 
 /* شريط الحقوق السفلي والتطوير المربوط بالواتساب */
@@ -553,7 +554,7 @@ a {
 }
 
 .dev-link {
-    color: var(--gold-color) !important;
+    color: var(--accent-color) !important;
     font-weight: 800;
     display: inline-flex;
     align-items: center;
@@ -565,7 +566,7 @@ a {
 }
 
 .dev-link:hover {
-    background: var(--gold-color);
+    background: var(--accent-color);
     color: var(--main-color) !important;
 }
 
@@ -639,7 +640,7 @@ a {
     justify-content: center;
     z-index: 9999 !important;
     cursor: pointer;
-    border: 2px solid var(--gold-color);
+    border: 2px solid var(--accent-color);
     font-size: 1rem;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, visibility var(--transition-speed) ease;
@@ -657,6 +658,6 @@ a {
 }
 
 .back-to-top:hover {
-    background-color: var(--gold-color);
+    background-color: var(--accent-color);
     color: var(--main-color);
 }
