@@ -33,12 +33,12 @@ html {
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: var(--font-main) !important;
     color: var(--text-dark);
     background-color: var(--white);
     line-height: 1.7;
     width: 100%;
-    overflow-x: hidden; /* حظر أي اهتزاز أو تمدد أفقي في الجوال */
+    overflow-x: hidden !important; /* حظر أي اهتزاز أو تمدد أفقي في الجوال */
     -webkit-text-size-adjust: 100%;
 }
 
@@ -104,16 +104,31 @@ a {
     font-size: 0.8rem;
     font-weight: 800;
     line-height: 1.4;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* حسم انزياح شريط التنبيه العلوي كلياً وتوفير مساحة المعاينة للجوال */
+@media (max-width: 768px) {
+    .promo-strip {
+        display: none !important;
+    }
 }
 
 .main-navigation {
     background-color: var(--main-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
     border-bottom: 2px solid var(--accent-color);
     padding: 10px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    min-height: 70px !important; /* حجز مساحة الهيدر لفتح الصفحة مسبقة الارتفاع ومنع الـ CLS */
 }
 
 .nav-container {
@@ -150,6 +165,17 @@ a {
     padding: 80px 20px 40px;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
+}
+
+/* إخفاء درج القائمة للجوال فوراً أثناء التحميل لمنع حدوث وميض أو انزياح تراكبي */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none !important;
+    }
+    .nav-menu.open {
+        display: flex !important;
+        transform: translateX(0);
+    }
 }
 
 .nav-menu.open {
@@ -224,16 +250,16 @@ a {
 /* دعم الشاشات الكبيرة تلقائياً */
 @media (min-width: 993px) {
     .nav-menu {
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        box-shadow: none;
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        transform: translateX(0);
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        transform: translateX(0) !important;
     }
     .nav-links {
         flex-direction: row;
@@ -274,16 +300,29 @@ a {
    تنسيق البانر الرئيسي لمنع انزياح العناصر (Hero Section Styles)
    ========================================================================== */
 .hero {
-    position: relative;
-    background-size: cover;
-    background-position: center;
+    position: relative !important;
     padding: 80px 0 60px;
     min-height: 480px;
     display: flex;
     align-items: center;
     color: var(--white);
     text-align: center;
-    overflow: hidden;
+    overflow: hidden !important;
+    background: linear-gradient(rgba(8, 49, 43, 0.94), rgba(8, 49, 43, 0.96)) !important;
+    width: 100% !important;
+}
+
+/* كود حاسم لإبقاء الصورة كخلفية مطلقة متجاوبة تمنع أي انزياح أو تضخم بالأبعاد */
+.hero-bg-img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    opacity: 0.15 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
 }
 
 .hero-overlay {
@@ -297,8 +336,8 @@ a {
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
+    position: relative !important;
+    z-index: 2 !important;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -460,6 +499,29 @@ a {
 }
 
 /* ==========================================================================
+   العدادات الرقمية الثابتة (تنسيقات لمنع انزياح الـ CLS تماماً)
+   ========================================================================== */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 25px 10px;
+    background: var(--main-color);
+    border-radius: 15px;
+    margin: 25px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent-color);
+    display: inline-block;
+    min-width: 60px; /* ثبات حاسم للمساحة لمنع أي اهتزاز للكلمات المجاورة */
+}
+
+/* ==========================================================================
    الفوتر الفخم والموحد (متوافق تماماً مع تصفح الجوال السريع)
    ========================================================================== */
 .footer-main {
@@ -574,12 +636,13 @@ a {
    أزرار التحويل والاتصال الثابتة بالجوال لزيادة الاتصالات (CTA)
    ========================================================================== */
 .fixed-widgets {
-    position: fixed;
-    right: 12px;
-    bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    position: fixed !important;
+    right: 12px !important;
+    bottom: 20px !important;
+    left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
     z-index: 9999 !important;
 }
 
@@ -627,9 +690,10 @@ a {
    زر الصعود للأعلى (Back To Top) المحسن لسهولة تصفح الجوال
    ========================================================================== */
 .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    left: 12px;
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 12px !important;
+    right: auto !important;
     width: 46px;
     height: 46px;
     background-color: var(--main-color);
