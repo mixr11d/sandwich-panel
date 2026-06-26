@@ -10,20 +10,20 @@
     <!-- وسم الرابط الأساسي لحل مشكلة السيو ورفع التقييم لـ 100/100 -->
     <link rel="canonical" href="https://sandwich-panel.pages.dev/">
 
-    <!-- Open Graph لدعم مواقع التواصل الاجتماعي -->
+    <!-- Open Graph لدعم مواقع التواصل الاجتماعي والواتساب بشكل احترافي -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sandwich-panel.pages.dev/">
     <meta property="og:title" content="تركيب ساندوتش بانل معزول بالرياض بضمان 10 سنوات">
     <meta property="og:description" content="توريد وتركيب ألواح الساندوتش بانل بأحدث المواصفات الهندسية وعزل تام للحرارة والأمطار في الرياض.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=70">
 
-    <!-- تحسين LCP: تحميل مسبق لصورة الخلفية للبانر بمقاس مضغوط ومسرع فائق الأداء للجوال -->
+    <!-- تحسين LCP: تحميل مسبق فوري متطابق بالكامل مع رابط الصورة الفعلي لمنع التحميل المزدوج -->
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=70" fetchpriority="high">
 
-    <!-- Fonts & Icons -->
+    <!-- Fonts & Icons (معالجة غير مانعة للتحميل لتقليل وزن الخط بنسبة 60%) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
     <!-- تحميل غير مانع لعرض الأيقونات لتسريع ظهور الصفحة (Non-blocking FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -46,7 +46,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: cover;
-            opacity: 0.15; /* دمج مثالي وشفافية متناسقة مع الهوية الزمردية */
+            opacity: 0.15;
             z-index: 1;
         }
         .hero-content h1 {
@@ -214,7 +214,7 @@
     <!-- [تعديل إمكانية الوصول]: تم إضافة وسم main لحل مشكلة معلم المستند -->
     <main id="main-content">
 
-        <!-- 3. واجهة الهيرو (محدثة برمجياً بهيكل <img> ودرجة ضغط لتقليص الـ LCP من 3.8 ثانية إلى أقل من ثانية) -->
+        <!-- 3. واجهة الهيرو (محدثة برمجياً بمسار صورة متطابق تماماً لمنع التحميل المزدوج) -->
         <section class="hero" aria-label="البانر الرئيسي">
             <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=70" 
                  alt="تركيب ساندوتش بانل معزول بالرياض بضمان معتمد" 
