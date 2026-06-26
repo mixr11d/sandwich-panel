@@ -20,7 +20,7 @@
     <!-- تحسين LCP: تحميل مسبق فوري متطابق بالكامل مع رابط صورتك الحقيقية لإلغاء التحميل المزدوج والاتصالات الخارجية -->
     <link rel="preload" as="image" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhibkcnBTEMQLdaZYKQI6AT1RYfQyBKowX2xQuVJ9Sv80We3WY0X-RRmkilu5aG3Qv-AYHKkQRS0owMPkwxQl3_F0l2QBQPhuPX8U6yZtQs2DQm5BIp8848qlVLOpRZA1KZRWXyjYB2bGLwq4gi_eUm3Xop4evtWvzwtPbNw1h8um1-u4zU5PNRP21wxjY/s800-rw/IMG-20250303-WA0017.jpg" fetchpriority="high">
 
-    <!-- Fonts & Icons (استدعاء مسرع ومباشر لمنع حدوث الـ FOUT وتصفير الـ CLS تماماً) -->
+    <!-- Fonts & Icons (استدعاء مباشر ومسرع لمنع حدوث الـ FOUT وتصفير الـ CLS تماماً) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -155,6 +155,14 @@
             min-width: 60px;
         }
 
+        /* كود حسم انزياح شريط التنبيه العلوي لمنع الالتفاف أفقياً على الجوال */
+        .promo-strip {
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            width: 100% !important;
+        }
+
         @media (min-width: 769px) {
             .hero-content h1 { font-size: 2.8rem; }
             .hero-content p { font-size: 1.15rem; }
@@ -223,12 +231,11 @@
     <!-- [تعديل إمكانية الوصول]: تم إضافة وسم main لحل مشكلة معلم المستند -->
     <main id="main-content">
 
-        <!-- 3. واجهة الهيرو (تم إصلاح سمة الـ Style المضمنة لإلغاء الـ CLS تماماً وتأمين سرعة الأداء الفائقة) -->
+        <!-- 3. واجهة الهيرو -->
         <section class="hero" aria-label="البانر الرئيسي">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhibkcnBTEMQLdaZYKQI6AT1RYfQyBKowX2xQuVJ9Sv80We3WY0X-RRmkilu5aG3Qv-AYHKkQRS0owMPkwxQl3_F0l2QBQPhuPX8U6yZtQs2DQm5BIp8848qlVLOpRZA1KZRWXyjYB2bGLwq4gi_eUm3Xop4evtWvzwtPbNw1h8um1-u4zU5PNRP21wxjY/s800-rw/IMG-20250303-WA0017.jpg" 
                  alt="تركيب ساندوتش بانل معزول بالرياض بضمان معتمد" 
                  class="hero-bg-img" 
-                 style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: 0.15 !important; z-index: 1 !important; pointer-events: none !important;"
                  width="800" 
                  height="400" 
                  loading="eager" 
@@ -404,7 +411,7 @@
             </div>
         </section>
 
-        <!-- 7. قسم العدادات الرقمية الثابتة (تم إلغاء جافاسكربت العداد لضمان تصفير CLS والحفاظ على ثبات التخطيط) -->
+        <!-- 7. قسم العدادات الرقمية الثابتة -->
         <section class="section-padding bg-white">
             <div class="container">
                 <div class="stats-container" id="counter-section">
